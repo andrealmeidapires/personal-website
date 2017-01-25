@@ -1,0 +1,18 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "my resume info to apply for web developer roles",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^2.2.19"
+  },
+  "devDependencies": {
+    "jasmine-node": "",
+    "request": "^2.79.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "andré pires",
+  "license": "ISC"
+}

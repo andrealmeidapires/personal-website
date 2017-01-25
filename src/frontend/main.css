@@ -1,0 +1,11 @@
+.resume{
+  text-align: center;
+}
+
+.carouselImg{
+  width: auto;
+  height:300px;
+  max-height: 300px;
+  display: block;
+  margin-left: auto;
+}
