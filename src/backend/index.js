@@ -1,5 +1,5 @@
-var server = require("./server.js");
-var requestHandlers = require("./requestHandlers.js");
+var server = require("./server");
+var requestHandlers = require("./requestHandlers");
 var port = 8080;
 var hostname = "localhost";
 

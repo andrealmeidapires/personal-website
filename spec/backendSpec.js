@@ -2,9 +2,9 @@
 
 var port = 8080;
 var request = require("request");
-var start = require("../src/backend/requestHandlers.js").start;
-var dbSession = require("../src/backend/dbSession.js");
-var resetDatabase = require("./resetDatabase.js");
+var start = require("../src/backend/requestHandlers").start;
+var dbSession = require("../src/backend/dbSession");
+var resetDatabase = require("./resetDatabase");
 var async = require("async");
 
 describe("The API", function() {

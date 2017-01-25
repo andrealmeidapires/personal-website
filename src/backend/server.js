@@ -1,6 +1,6 @@
 var http = require("http");
 var url = require("url");
-var route = require("./router.js").route;
+var route = require("./router").route;
 
 function start(port, hostname, handle) {
   function onRequest(request, response) {

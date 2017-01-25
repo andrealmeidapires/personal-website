@@ -12,7 +12,7 @@ function answer(response, message) {
 }
 
 function start(request, response, postData) {
-  fs.readFile("../frontend/index.html", function(err, fd) {
+  fs.readFile("src/frontend/index.html", function(err, fd) {
     if(err){
       console.log(err);
       throw err;
@@ -33,7 +33,7 @@ function show(request, response, postData){
 function getImage(request, response, name) {
   var pathname = url.parse(request.url).pathname;
 
-  fs.readFile("../frontend/images/" + pathname, function (err, fd) {
+  fs.readFile("src/frontend/images/" + pathname, function (err, fd) {
     if (err) {
       console.log(err);
       throw err;
@@ -49,7 +49,7 @@ function getImage(request, response, name) {
 function getCSS(request, response, name) {
   var pathname = url.parse(request.url).pathname;
 
-  fs.readFile("../frontend/" + pathname, function (err, fd) {
+  fs.readFile("./" + pathname, function (err, fd) {
     if (err) {
       console.log(err);
       throw err;
