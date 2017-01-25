@@ -12,7 +12,7 @@ function answer(response, message) {
 }
 
 function start(request, response, postData) {
-  fs.readFile("../frontend/home.html", function(err, fd) {
+  fs.readFile("../frontend/index.html", function(err, fd) {
     if(err){
       console.log(err);
       throw err;
