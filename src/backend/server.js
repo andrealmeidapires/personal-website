@@ -10,7 +10,7 @@ function start(port, hostname, handle) {
 
     request.on("data", function (postDataChunk) {
       postData += postDataChunk;
-      console.log("Received postDataChunk: ", postDataChunk);
+      //console.log("Received postDataChunk: ", postDataChunk);
     });
 
     request.on("end", function() {

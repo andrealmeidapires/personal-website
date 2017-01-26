@@ -5,7 +5,7 @@ var hostname = "localhost";
 
 var handle = {};
 handle["/"] = requestHandlers.start;
-handle["/show"] = requestHandlers.show;
+handle["/message"] = requestHandlers.message;
 handle["/getImage"] = requestHandlers.getImage;
 handle["/getCSS"] = requestHandlers.getCSS;
 handle["/experience"] = requestHandlers.getExperience;

@@ -72,6 +72,26 @@
 
     });
 
+    $(function () {
+
+        $('#getInTouchForm').on('submit', function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: '/message',
+            data: $('#getInTouchForm').serialize(),
+            success: function () {
+              alert("I'll get in touch with you soon =)");
+              $('#getInTouchForm')[0].reset();
+            }
+          });
+
+        });
+
+      });
+
   </script>
 
 </head>
@@ -81,54 +101,7 @@
       <p>Software Developer</p>
     </div>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-
-      <!-- wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active carousel">
-          <img class="carouselImg" src="lisboa.jpg" alt="Lisboa" height="300">
-          <div class="carousel-caption">
-            <h3>Lisboa</h3>
-            <p>123</p>
-          </div>
-        </div>
-        <div class="item carouselImg">
-          <img class="carouselImg" src="porto.png" alt="Porto" height="300">
-          <div class="carousel-caption">
-            <h3>Porto</h3>
-            <p>456</p>
-          </div>
-        </div>
-        <div class="item carouselImg">
-          <img class="carouselImg" src="leiria.jpg" alt="Leiria" height="300">
-          <div class="carousel-caption">
-            <h3>Leiria</h3>
-            <p>789</p>
-          </div>
-        </div>
-      </div>
-
-        <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
     <div class="container">
-
-
-
 
       <br/><br/>
 
@@ -163,34 +136,84 @@
       <!-- Experience table -->
       <table id="experienceTable" class="table table-striped"></table>
 
-      <br/><br/>
+      <h3>Where I've been</h3>
+      <br/>
 
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active carousel">
+            <img class="carouselImg" src="dublin.jpg" alt="Dublin">
+            <div class="carousel-caption">
+              <h3>Dublin</h3>
+              <p>2015-2016</p>
+            </div>
+          </div>
+          <div class="item carouselImg">
+            <img class="carouselImg" src="lisboa.jpg" alt="Lisbon">
+            <div class="carousel-caption">
+              <h3>Lisbon</h3>
+              <p>2006-2015 and 2016-present</p>
+            </div>
+          </div>
+          <div class="item carouselImg">
+            <img class="carouselImg" src="marinha-grande.jpg" alt="Marinha Grande">
+            <div class="carousel-caption">
+              <h3>Marinha Grande</h3>
+              <p>1988-2006</p>
+            </div>
+          </div>
+        </div>
+
+          <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <br/>
       <!-- Get in touch -->
       <h3>Get in touch</h3>
-      <div>
-        <div class="form-group">
-          <form action="/show" method="post">
-            <div class="row">
-              <div class="col-xs6">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control" placeholder="First and last name"/>
-              </div>
-              <div class="col-xs6">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="name@emailservice.region"/>
-              </div>
+      <div class="form-group">
+        <form id="getInTouchForm">
+          <div class="row">
+            <div class="col-xs-6">
+              <label>Name</label>
+              <input type="text" name="name" class="form-control" placeholder="First and last name"/>
             </div>
-            <div class="row">
+            <div class="col-xs-6">
+              <label>Email</label>
+              <input type="email" name="email" class="form-control" placeholder="name@emailservice.region"/>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col-xs-12">
               <label>Message</label>
               <textarea class="form-control" rows="3" name="message" placeholder="Enter your message here"></textarea>
             </div>
-            <div class="row">
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
               <br/>
               <input type="submit" class="btn btn-primary" value="Send" name="button"/>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
+
 
       <hr class="featurette-divider">
       <footer>

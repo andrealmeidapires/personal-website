@@ -23,11 +23,13 @@ function start(request, response, postData) {
 
 }
 /* POST data in forms */
-function show(request, response, postData){
-  console.log("postData");
-  console.dir(postData);
-  var message = "The entered field was " + querystring.parse(postData).field1;
-  answer(response, message);
+function message(request, response, postData){
+  console.log("New message");
+  console.log("Name: " + querystring.parse(postData).name);
+  console.log("Email: " + querystring.parse(postData).email);
+  console.log("Message: " + querystring.parse(postData).message);
+
+  start(request, response, postData);
 }
 
 function getImage(request, response, name) {
@@ -36,7 +38,6 @@ function getImage(request, response, name) {
   fs.readFile("src/frontend/images/" + pathname, function (err, fd) {
     if (err) {
       console.log(err);
-      throw err;
     } else {
       response.writeHead(200, {"Content-Type": "image/jpeg"});
       response.write(fd);
@@ -92,6 +93,7 @@ function getExperience(request, response, postData, hostname){
 };
 
 exports.start = start;
+exports.message = message;
 exports.getImage = getImage;
 exports.getCSS = getCSS;
 exports.getExperience = getExperience;
