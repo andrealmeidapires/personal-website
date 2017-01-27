@@ -6,8 +6,7 @@ var hostname = "localhost";
 var handle = {};
 handle["/"] = requestHandlers.start;
 handle["/message"] = requestHandlers.message;
-handle["/getImage"] = requestHandlers.getImage;
-handle["/getCSS"] = requestHandlers.getCSS;
+handle["/getFile"] = requestHandlers.getFile;
 handle["/experience"] = requestHandlers.getExperience;
 
 server.start(port, hostname, handle);

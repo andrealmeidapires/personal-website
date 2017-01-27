@@ -5,8 +5,8 @@ var url = require("url");
 var querystring = require("querystring");
 var MongoClient = require("mongodb").MongoClient;
 
-function answer(response, message) {
-  response.writeHead(200, {"Content-Type":"text/html"});
+function sendResponse(response, contentType, message) {
+  response.writeHead(200, {"Content-Type": contentType});
   response.write(message);
   response.end();
 }
@@ -17,7 +17,7 @@ function start(request, response, postData) {
       console.log(err);
       throw err;
     } else {
-      answer(response, fd);
+      sendResponse(response, "text/html", fd);
     }
   });
 
@@ -32,34 +32,44 @@ function message(request, response, postData){
   start(request, response, postData);
 }
 
-function getImage(request, response, name) {
+function getFile(request, response, name) {
   var pathname = url.parse(request.url).pathname;
+  var filenameExtensionArray = pathname.split(".");
 
-  fs.readFile("src/frontend/images/" + pathname, function (err, fd) {
-    if (err) {
-      console.log(err);
-    } else {
-      response.writeHead(200, {"Content-Type": "image/jpeg"});
-      response.write(fd);
-      response.end();
+  if(!(filenameExtensionArray && filenameExtensionArray.length > 0)){
+    console.log("Invalid filename");
+
+  } else {
+    var extension = filenameExtensionArray[1];
+    var location;
+    var contentType;
+
+    switch(extension){
+      case "js":
+        location = "./";
+        contentType = "application/javascript";
+        break;
+      case "css":
+        location = "./";
+        contentType = "text/css";
+        break;
+      default:
+        location = "src/frontend/images/";
+        contentType = "image/jpeg";
     }
-  });
 
-}
+    fs.readFile(location + pathname, function (err, fd) {
+      if (err) {
+        console.log(err);
+        response.end();
+      } else {
+        sendResponse(response, contentType, fd);
+        if(extension === "css")
+          console.log("extension", extension, "contentType", contentType, "fd", fd);
+      }
+    });
 
-function getCSS(request, response, name) {
-  var pathname = url.parse(request.url).pathname;
-
-  fs.readFile("./" + pathname, function (err, fd) {
-    if (err) {
-      console.log(err);
-      throw err;
-    } else {
-      response.writeHead(200, {"Content-Type": "text/css"});
-      response.write(fd);
-      response.end();
-    }
-  });
+  }
 
 }
 
@@ -94,6 +104,5 @@ function getExperience(request, response, postData, hostname){
 
 exports.start = start;
 exports.message = message;
-exports.getImage = getImage;
-exports.getCSS = getCSS;
+exports.getFile = getFile;
 exports.getExperience = getExperience;
