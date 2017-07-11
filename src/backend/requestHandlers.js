@@ -64,8 +64,6 @@ function getFile(request, response, name) {
         response.end();
       } else {
         sendResponse(response, contentType, fd);
-        if(extension === "css")
-          console.log("extension", extension, "contentType", contentType, "fd", fd);
       }
     });
 

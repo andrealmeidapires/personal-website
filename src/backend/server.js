@@ -6,7 +6,9 @@ function start(port, hostname, handle) {
   function onRequest(request, response) {
     var postData = "";
     var pathname = url.parse(request.url).pathname;
-    console.log("New request on pathname: " + pathname);
+    var timestamp = new Date();
+    var timestampString = timestamp.getFullYear()+"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+" "+timestamp.getHours()+":"+timestamp.getMinutes()+":"+timestamp.getSeconds()+"."+timestamp.getMilliseconds();
+    console.log(timestampString+" new request on pathname: " + pathname);
 
     request.on("data", function (postDataChunk) {
       postData += postDataChunk;
