@@ -4,7 +4,7 @@
   "description": "my resume info to apply for web developer roles",
   "main": "index.js",
   "dependencies": {
-    "mongodb": "^2.2.19"
+    "mongodb": "^3.1.13"
   },
   "devDependencies": {
     "jasmine-node": "",
