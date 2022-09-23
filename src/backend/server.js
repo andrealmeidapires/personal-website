@@ -1,13 +1,13 @@
-var http = require("http");
-var url = require("url");
-var route = require("./router").route;
+let http = require("http");
+let url = require("url");
+let route = require("./router").route;
 
 function start(port, hostname, handle) {
   function onRequest(request, response) {
-    var postData = "";
-    var pathname = url.parse(request.url).pathname;
-    var timestamp = new Date();
-    var timestampString = timestamp.getFullYear()+"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+" "+timestamp.getHours()+":"+timestamp.getMinutes()+":"+timestamp.getSeconds()+"."+timestamp.getMilliseconds();
+    let postData = "";
+    let pathname = url.parse(request.url).pathname;
+    let timestamp = new Date();
+    let timestampString = timestamp.getFullYear()+"-"+(timestamp.getMonth()+1)+"-"+timestamp.getDate()+" "+timestamp.getHours()+":"+timestamp.getMinutes()+":"+timestamp.getSeconds()+"."+timestamp.getMilliseconds();
     console.log(timestampString+" new request on pathname: " + pathname);
 
     request.on("data", function (postDataChunk) {
