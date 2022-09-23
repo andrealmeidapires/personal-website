@@ -1,9 +1,9 @@
 'use strict';
 
-var fs = require("fs");
-var url = require("url");
-var querystring = require("querystring");
-var MongoClient = require("mongodb").MongoClient;
+let fs = require("fs");
+let url = require("url");
+let querystring = require("querystring");
+let MongoClient = require("mongodb").MongoClient;
 
 function sendResponse(response, contentType, message) {
   response.writeHead(200, {"Content-Type": contentType});
@@ -33,16 +33,16 @@ function message(request, response, postData){
 }
 
 function getFile(request, response, name) {
-  var pathname = url.parse(request.url).pathname;
-  var filenameExtensionArray = pathname.split(".");
+  let pathname = url.parse(request.url).pathname;
+  let filenameExtensionArray = pathname.split(".");
 
   if(!(filenameExtensionArray && filenameExtensionArray.length > 0)){
     console.log("Invalid filename");
 
   } else {
-    var extension = filenameExtensionArray[1];
-    var location;
-    var contentType;
+    let extension = filenameExtensionArray[1];
+    let location;
+    let contentType;
 
     switch(extension){
       case "js":
@@ -76,10 +76,10 @@ function getExperience(request, response, postData, hostname){
     "mongodb://" + hostname + ":27017/career",
     function(err, connection) {
 
-      var collection = connection.collection("experience");
+      let collection = connection.collection("experience");
 
-      var stream = collection.find({}, {"_id": 0}).sort({"startDate": -1}).stream();
-      var documents = [];
+      let stream = collection.find({}, {"_id": 0}).sort({"startDate": -1}).stream();
+      let documents = [];
 
       stream.on("data", function(document) {
         documents.push(document);

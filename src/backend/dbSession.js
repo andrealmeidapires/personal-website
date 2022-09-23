@@ -1,8 +1,8 @@
 'use strict';
 
-var MongoClient = require("mongodb").MongoClient;
+let MongoClient = require("mongodb").MongoClient;
 
-var dbSession = function () {
+let dbSession = function () {
 
   MongoClient.connect("mongodb://localhost:27017/career", function(err, connection) {
     return connection;

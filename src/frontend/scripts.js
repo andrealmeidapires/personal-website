@@ -1,8 +1,8 @@
-var formatDate = function(data, type, row) {
+let formatDate = function (data, type, row) {
   // If display or filter data is requested, format the date
   if ( type === 'display' || type === 'filter' ) {
-    var d = new Date(data);
-    var monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.","Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
+    let d = new Date(data);
+    let monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.","Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
     return d.getFullYear() + " " + monthNames[d.getMonth()];
   }
 
@@ -12,7 +12,7 @@ var formatDate = function(data, type, row) {
   return data;
 };
 
-var checkEmptyField = function(data, type, row) {
+let checkEmptyField = function(data, type, row) {
   if(data === null || data === "")
     return "N/A";
   else {
